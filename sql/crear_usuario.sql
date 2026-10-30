@@ -1,0 +1,5 @@
+-- Ejecutar UNA VEZ como administrador en el PDB correspondiente (por ejemplo XEPDB1).
+-- Reemplazar CAMBIAR_CONTRASENA por la clave local elegida antes de ejecutar.
+CREATE USER VETDB IDENTIFIED BY "CAMBIAR_CONTRASENA";
+GRANT CREATE SESSION, CREATE TABLE, CREATE SEQUENCE TO VETDB;
+ALTER USER VETDB QUOTA UNLIMITED ON USERS;
