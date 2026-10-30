@@ -1,4 +1,4 @@
--- Ejecutar conectado como VETDB. No ejecutar las migraciones manualmente.
+-- Ejecutar conectado como VETANDESDB. No ejecutar las migraciones manualmente.
 SELECT 'propietarios' tabla, COUNT(*) cantidad FROM propietario
 UNION ALL SELECT 'prestaciones', COUNT(*) FROM prestacion
 UNION ALL SELECT 'mascotas', COUNT(*) FROM mascota

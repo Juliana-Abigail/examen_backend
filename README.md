@@ -10,12 +10,12 @@ Desde esta carpeta, en PowerShell:
 
 ```powershell
 $env:DB_URL = 'jdbc:oracle:thin:@//localhost:1521/xepdb1'
-$env:DB_USERNAME = 'VETDB'
-$env:DB_PASSWORD = 'TU_CLAVE_ORACLE'
+$env:DB_USERNAME = 'VETANDESDB'
+$env:DB_PASSWORD = '1234567'
 .\mvnw.cmd spring-boot:run
 ```
 
-La URL y el usuario anteriores son los valores predeterminados; `DB_PASSWORD` es obligatoria. Despues de configurar esas variables, se inicia con un solo comando. En Linux/macOS: `sh mvnw spring-boot:run`.
+El perfil de desarrollo ya tiene configurada esta conexion local y se inicia directamente con `.\mvnw.cmd spring-boot:run`. Las variables anteriores permiten reemplazarla. El perfil de produccion exige las variables de conexion. En Linux/macOS: `sh mvnw spring-boot:run`.
 
 - API: http://localhost:8080/api/v1
 - Swagger: http://localhost:8080/swagger-ui.html
@@ -146,7 +146,7 @@ Las pruebas unitarias no necesitan Oracle. Las de integracion quedan omitidas si
 
 Importa `postman/VetAndes.postman_collection.json` y ejecuta las carpetas en orden. La coleccion captura tokens e IDs, prueba los codigos 200/201, 400, 401, 403, 404 y 409 y deja una atencion ANULADA como historial. Los ejemplos guardados son ilustrativos del contrato; no constituyen capturas de una ejecucion real. `sql/verificacion.sql` permite mostrar cabecera, detalles, totales, reporte y conteos antes/despues del rechazo.
 
-Estado de validacion de esta entrega: compilacion y empaquetado JAR correctos; 23 pruebas unitarias aprobadas y 6 pruebas de integracion omitidas por no disponer de la conexion Oracle de VetAndes. Coleccion JSON y sintaxis de sus scripts verificadas. Las pruebas contra Oracle y las capturas de ejecucion requieren configurar una conexion real; no se presentan como realizadas.
+Estado de validacion: 29 pruebas aprobadas, sin fallos ni omisiones (23 unitarias y 6 de integracion HTTP contra Oracle 21c en VETANDESDB/xepdb1). Flyway aplicado y esquema JPA validado. Se verificaron CRUD, login, permisos 401/403, descuento, filtros, reporte, CORS, Swagger y rollback real despues de los INSERT. Empaquetado JAR correcto. Coleccion JSON y sintaxis de scripts verificadas; la coleccion no se ejecuto en Postman. No se incluyen capturas de pantalla.
 
 ## Recorrido para la defensa
 
